@@ -1,4 +1,5 @@
 #include <iostream> // Incloem la llibreria iostream per poder utilitzar funcions d'entrada i sortida com cout i cin
+#include <limits>   // Incloem la llibreria limits per utilitzar numeric_limits
 
 using namespace std; // Utilitzem l'espai de noms estàndard per evitar escriure std:: abans de cout i cin
 
@@ -129,7 +130,9 @@ void game() {
         cin >> slot;
 
         // Verifiquem si la posició és vàlida
-        if(slot < 1 || slot > 9) {
+        if(cin.fail() || slot < 1 || slot > 9) {
+            cin.clear(); // Netegem l'error
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Descartem l'entrada incorrecta
             cout << "That slot is invalid! Try another slot!" << endl;
             i--; // Repetim el torn
             continue;
