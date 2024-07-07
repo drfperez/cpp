@@ -2,6 +2,51 @@
 
 using namespace std; // Utilitzem l'espai de noms estàndard per evitar escriure std:: abans de cout i cin
 
+/* 
+   Com jugar a "Tic-Tac-Toe" amb aquest programa:
+
+   1. Compilar el codi:
+      - Si utilitzes un compilador de C++ com `g++`, obre una terminal i introdueix la següent comanda:
+        g++ -o tictactoe tictactoe.cpp
+
+   2. Executar l'executable:
+      - Un cop compilat el codi, executa l'executable generat:
+        ./tictactoe
+
+   3. Selecció del Marcador:
+      - El joc començarà demanant al jugador 1 que esculli el seu marcador ('X' o 'O'). Introdueix el caràcter i prem Enter.
+        Exemple:
+        Player one, choose your marker: X
+
+   4. Torn del Jugador:
+      - Els jugadors es tornaran per introduir el número de la casella on volen col·locar el seu marcador. 
+        El tauler té els números de les caselles de l'1 al 9 disposats de la següent manera:
+          1 | 2 | 3
+         ---|---|---
+          4 | 5 | 6
+         ---|---|---
+          7 | 8 | 9
+
+   5. Introducció de la Casella:
+      - Durant el seu torn, cada jugador haurà d'introduir el número de la casella on vol col·locar el seu marcador. 
+        Exemple:
+        It's player 1's turn. Enter your slot: 5
+
+   6. Actualització del Tauler:
+      - Després de cada moviment, el tauler es redibuixarà per mostrar les posicions actualitzades dels marcadors.
+
+   7. Verificació del Guanyador:
+      - Després de cada moviment, el joc verificarà si hi ha un guanyador. Si un jugador aconsegueix alinear tres marcadors consecutius 
+        (horitzontalment, verticalment o diagonalment), el joc anunciarà el guanyador.
+        Exemple:
+        Player one won! Congratulations!
+
+   8. Empat:
+      - Si el tauler s'omple sense que cap jugador aconsegueixi alinear tres marcadors consecutius, el joc declararà un empat.
+        Exemple:
+        That is a tie game!
+*/
+
 // Definim el tauler de joc com una matriu de 3x3 de caràcters
 char board[3][3] = { {'1','2','3'}, {'4','5','6'}, {'7','8','9'} };
 char current_marker; // Aquest serà el marcador ('X' o 'O') del jugador actual
@@ -75,7 +120,7 @@ void game() {
 
     drawBoard();
 
-    int player_won;
+    int player_won = 0; // Inicialitzem la variable de guanyador
 
     // Bucle per alternar els torns fins a un màxim de 9 moviments
     for(int i = 0; i < 9; i++) {
@@ -123,5 +168,6 @@ void game() {
 // La funció main és el punt d'entrada del programa
 int main() {
     game(); // Iniciem el joc
+    return 0; // Retornem 0 per indicar que el programa ha acabat correctament
 }
 
